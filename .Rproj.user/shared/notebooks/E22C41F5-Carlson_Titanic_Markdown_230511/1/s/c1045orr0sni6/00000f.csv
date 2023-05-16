@@ -1,0 +1,6 @@
+"0","ggplot(titanic, aes(x = age)) +"
+"0","  geom_histogram(binwidth = 5, fill = ""steelblue"", color = ""white"") +"
+"0","  labs(title = ""Age Distribution of Titanic Passengers"","
+"0","       subtitle = ""Histogram of Ages"","
+"0","       x = ""Age"","
+"0","       y = ""Count"")"

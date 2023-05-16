@@ -1,0 +1,79 @@
+---
+title: "EDA of Titanic Passenger List"
+author: "Derick Carlson"
+date: "2023-05-11"
+---
+
+# Assignment Part I: Examples of adding styles
+
+#### Links
+
+**The original original source of data can downloaded using this link**  
+https://public.tableau.com/app/sample-data/titanic%20passenger%20list.csv
+
+#### Unordered Lists
+
+*The most common plotting packages in R are:*
+
+* base
+* lattice
+* ggplot2
+
+*but not *~~Excel~~
+
+# Assignment Part II: Titanic EDA using RMD
+**The original original source of data can downloaded using this link**  
+https://public.tableau.com/app/sample-data/titanic%20passenger%20list.csv
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse) 
+titanic <- read.csv("TitanicPassengerList.csv", stringsAsFactors = FALSE)
+```
+## Part I: Handling Missing Values
+
+```{r include=FALSE}
+naage <- sum(is.na(titanic$age))
+
+titanic <- titanic %>%
+  filter(!is.na(age))
+```
+
+```{r include=FALSE}
+rowct <- nrow(titanic)
+```
+
+There are `r rowct` observations left after omitting `r naage` blank ages.
+
+## Part III: Summary Statistics
+
+The mean age of the Titanic passengers is `r mean(titanic$age)`.
+
+```{r include=FALSE}
+female_df <- titanic %>%
+  filter(sex == "female") 
+
+female_count <- nrow(female_df)
+f_mean_age <- mean(female_df$age)
+
+male_df <- titanic %>%
+  filter(sex == "male") 
+
+male_count <- nrow(male_df)
+m_mean_age <- mean(male_df$age) 
+```
+`r female_count` females survived, averaging age `r f_mean_age`.
+
+`r male_count` males survived, averaging age `r m_mean_age`.
+
+## Part IV: Age Distribution
+
+```{r}
+ggplot(titanic, aes(x = age)) +
+  geom_histogram(binwidth = 5, fill = "steelblue", color = "white") +
+  labs(title = "Age Distribution of Titanic Passengers",
+       subtitle = "Histogram of Ages",
+       x = "Age",
+       y = "Count")
+```
+
+

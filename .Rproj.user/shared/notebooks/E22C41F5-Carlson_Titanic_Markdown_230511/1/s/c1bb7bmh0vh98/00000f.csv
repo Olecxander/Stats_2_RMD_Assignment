@@ -1,0 +1,4 @@
+"0","naage <- sum(is.na(titanic$age))"
+"0",""
+"0","titanic <- titanic %>%"
+"0","  filter(!is.na(age))"

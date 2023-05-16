@@ -1,0 +1,2 @@
+"0","library(tidyverse) "
+"0","titanic <- read.csv(""TitanicPassengerList.csv"", stringsAsFactors = FALSE)"
